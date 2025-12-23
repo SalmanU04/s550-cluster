@@ -1,0 +1,9 @@
+"./drive_data.obj"
+"./main.obj"
+"./s550_cluster.obj"
+"./s550_timer.obj"
+"./s550_uart.obj"
+"./tm4c123gh6pm_startup_ccs.obj"
+"../tm4c123gh6pm.cmd"
+-l"/Applications/ti/TivaWare-2.2.0.295/driverlib/ccs/Debug/driverlib.lib"
+-llibc.a
