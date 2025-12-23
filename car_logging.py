@@ -3,30 +3,22 @@ import random
 
 # Config
 duration_minutes = 10
-interval_ms = 100  # Every 50 ms
+interval_ms = 100  # Every 100 ms (10Hz)
 total_steps = (duration_minutes * 60 * 1000) // interval_ms
 
 # Output
-filename = "drive.csv"
+filename = "cluster_sim_10min.csv"
 
-prev_speed = 0  # for smoothing
-
+# Helper functions
 def simulate_speed_rpm(t):
-    global prev_speed
-    max_speed = 260  # km/h
-    # Acceleration/deceleration
-    base_speed = 160 * (1 - abs(((t % 1000) / 500) - 1))
-    noise = base_speed * random.uniform(-0.02, 0.02)
-    target_speed = max(0, min(max_speed, base_speed + noise))
-    #Smoothing
-    speed = 0.3 * prev_speed + 0.7 * target_speed
-    prev_speed = speed
-    # RPM follows speed
-    rpm = 800 + speed * 32 + random.uniform(-5, 5)
-    return speed, min(rpm, 7000)
+    # Simulate acceleration + braking waves
+    max_speed = 120
+    speed = abs(80 * (1 + 0.5 * random.uniform(-1, 1)) * (1 - abs(((t % 1200) / 600) - 1)))  # sine-like wave
+    rpm = 800 + speed * 30 + random.uniform(-50, 50)
+    return min(speed, max_speed), min(rpm, 7000)
 
 def simulate_turn_signals(t):
-    left = int((t // 200) % 20 == 0) 
+    left = int((t // 200) % 20 == 0)  # blink every 2s for 1s
     right = int((t // 200) % 30 == 0)
     return left, right
 
