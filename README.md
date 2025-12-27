@@ -14,3 +14,17 @@ The system allows the cluster to boot, display gauges, and respond to manually i
 * Embedded firmware written in C
 * Modular design for future simulator integration
 * Designed for real-time automotive systems research
+
+## Hardware
+
+* Tiva ARM M4-Cortex Microprocessor
+* MCP2551 CAN transceiver
+* Ford S550 digital instrument cluster
+
+## Software Stack
+* C/Embedded C
+* Code Composer Studio (CCS)
+* Python (for early CAN brute-force and simulation tools)
+
+
+
