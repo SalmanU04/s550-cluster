@@ -24,7 +24,7 @@ The system allows the cluster to boot, display gauges, and respond to manually i
 ## Software Stack
 * C/Embedded C
 * Code Composer Studio (CCS)
-* Python (for early CAN brute-force and simulation tools)
+* Python (for custom car-logging)
 
 
 
